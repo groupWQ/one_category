@@ -1,0 +1,43 @@
+//
+//  CTMediator+one.m
+//  one_category
+//
+//  Created by dzc on 2021/4/15.
+//
+
+#import "CTMediator+one.h"
+
+NSString * const MediatorTargetAccount = @"Account";
+NSString * const MediatorActionAccountLoginViewController = @"nativeLoginViewController";
+NSString * const MediatorActionAccountLoginStatus = @"nativeLoginStatus";
+NSString * const MediatorActionAccountLoginStatusChangeNotification = @"nativeLoginStatusChangeNotificationName";
+
+
+@implementation CTMediator (one)
+
+/**
+ *登陆(presentViewController)
+ **/
+- (UIViewController *)Account_viewControllerForLogin {
+    UIViewController *viewController = [self performTarget:MediatorTargetAccount action:MediatorActionAccountLoginViewController params:nil shouldCacheTarget:NO];
+    if ([viewController isKindOfClass:[UIViewController class]]) {
+        return viewController;
+    } else {
+        return [[UIViewController alloc] init];
+    }
+}
+/**
+ *登陆状态
+ **/
+- (BOOL)Account_statusForLogin {
+    return [[self performTarget:MediatorTargetAccount action:MediatorActionAccountLoginStatus params:nil shouldCacheTarget:NO] boolValue];
+}
+/**
+ *登陆状态改变
+ **/
+- (NSString *)Account_nameForLoginStatusChangeNotification {
+    return [self performTarget:MediatorTargetAccount action:MediatorActionAccountLoginStatusChangeNotification params:nil shouldCacheTarget:NO];
+}
+
+
+@end

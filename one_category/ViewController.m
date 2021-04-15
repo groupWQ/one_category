@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import <CTMediator/CTMediator.h>
 
 @interface ViewController ()
 

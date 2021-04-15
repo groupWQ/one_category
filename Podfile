@@ -6,4 +6,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'one_category' do
 
+pod 'CTMediator'
+
 end
